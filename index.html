@@ -213,7 +213,7 @@
       <div class="section-head reveal">
         <div>
           <span class="section-index">03 / ALLOCATION WORKFLOW</span>
-          <h2>용량 증설 요청이 들어오면,<br /><em>사용 가능한 디스크가 되기까지</em></h2>
+          <h2 class="allocation-heading">용량 증설 요청이 들어오면, <em>사용 가능한 디스크가 되기까지</em></h2>
         </div>
         <p>
           업무팀의 증설 요청을 기준으로 스토리지팀이 LUN을 생성·할당하고,
@@ -308,43 +308,11 @@
       <div class="section-kicker reveal">04 / LEDGER DATA PROTECTION</div>
       <div class="work-title reveal">
         <h2>원장 데이터를 <span class="gradient-text">InDR · ReDR</span>로 보호합니다.</h2>
-        <p>운영 원장 데이터를 기준으로 InDR에는 R2와 내부 업무용 복제본을, ReDR에는 원격 R2와 소산백업을 유지하는 구조를 한눈에 표현했습니다.</p>
+        <p>가운데 운영 원장 R1을 기준으로 좌측 InDR과 우측 ReDR에 각각 R2를 복제하고, InDR은 배치·백업·Gold Copy, ReDR은 소산백업까지 이어지는 보호 구조입니다.</p>
       </div>
 
       <div class="ledger-dr-map reveal">
-        <div class="dr-column primary-column">
-          <div class="dr-column-head">
-            <span>01 / PRODUCTION</span>
-            <i class="state-live">LIVE</i>
-          </div>
-
-          <div class="ledger-core">
-            <div class="ledger-title">
-              <span>CORE BANKING LEDGER</span>
-              <strong>원장 데이터</strong>
-              <small>Production · Source</small>
-            </div>
-            <div class="ledger-rack">
-              <i></i><i></i><i></i><i></i><i></i><i></i>
-            </div>
-            <div class="ledger-role"><span>R1</span><b>PRODUCTION DATA</b></div>
-          </div>
-
-          <div class="site-caption">
-            <span>SOURCE</span>
-            <p>업무 서비스가 사용하는 기준 원장 데이터</p>
-          </div>
-        </div>
-
-        <div class="dr-stream stream-indr">
-          <span class="stream-packet s1"></span>
-          <span class="stream-packet s2"></span>
-          <span class="stream-packet s3"></span>
-          <div class="stream-line"></div>
-          <strong>REMOTE REPLICATION</strong>
-          <small>원장 → InDR</small>
-        </div>
-
+        <!-- LEFT : InDR -->
         <div class="dr-column indr-column">
           <div class="dr-column-head">
             <span>02 / IN-HOUSE DR</span>
@@ -355,7 +323,7 @@
             <div>
               <span>LEDGER MIRROR</span>
               <strong>원장 R2 데이터</strong>
-              <small>InDR 기준 복제 데이터</small>
+              <small>원장 R1에서 복제된 InDR 데이터</small>
             </div>
             <b>R2</b>
           </div>
@@ -380,15 +348,48 @@
           </div>
         </div>
 
-        <div class="dr-stream stream-redr">
+        <!-- Center-to-left replication path -->
+        <div class="dr-stream stream-to-indr" aria-label="원장 R1에서 InDR로 복제">
           <span class="stream-packet s1"></span>
           <span class="stream-packet s2"></span>
           <span class="stream-packet s3"></span>
           <div class="stream-line"></div>
-          <strong>REMOTE REPLICATION</strong>
-          <small>원장 → ReDR</small>
         </div>
 
+        <!-- CENTER : Production R1 -->
+        <div class="dr-column primary-column primary-center">
+          <div class="dr-column-head">
+            <span>01 / PRODUCTION</span>
+            <i class="state-live">LIVE</i>
+          </div>
+
+          <div class="ledger-core">
+            <div class="ledger-title">
+              <span>CORE BANKING LEDGER</span>
+              <strong>원장 데이터</strong>
+              <small>Production · Source</small>
+            </div>
+            <div class="ledger-rack">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="ledger-role"><span>R1</span><b>PRODUCTION DATA</b></div>
+          </div>
+
+          <div class="site-caption">
+            <span>SOURCE</span>
+            <p>업무 서비스가 사용하는 기준 원장 데이터</p>
+          </div>
+        </div>
+
+        <!-- Center-to-right replication path -->
+        <div class="dr-stream stream-to-redr" aria-label="원장 R1에서 ReDR로 복제">
+          <span class="stream-packet s1"></span>
+          <span class="stream-packet s2"></span>
+          <span class="stream-packet s3"></span>
+          <div class="stream-line"></div>
+        </div>
+
+        <!-- RIGHT : ReDR -->
         <div class="dr-column redr-column">
           <div class="dr-column-head">
             <span>03 / REMOTE DR</span>
@@ -399,7 +400,7 @@
             <div>
               <span>REMOTE LEDGER</span>
               <strong>원장 R2 데이터</strong>
-              <small>원격 재해복구용 데이터</small>
+              <small>원장 R1에서 복제된 원격 DR 데이터</small>
             </div>
             <b>R2</b>
           </div>

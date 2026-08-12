@@ -73,3 +73,11 @@ https://YOUR-USERNAME.github.io/storage-work-portfolio/
 - 실제 장애 로그
 - 내부 DR 구성 상세
 - 사내 화면 캡처
+
+
+## V3 final changes
+- Allocation headline kept intact on desktop.
+- Production ledger R1 moved to the center.
+- InDR is left, ReDR is right.
+- Replication particles move outward from R1 to both DR sites.
+- Replication-path text labels removed.
