@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Enterprise Storage Engineer 업무 소개 포트폴리오" />
+  <title>Storage Engineer | 업무 소개</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="홈으로 이동">
+      <span class="brand-mark">ST</span>
+      <span>STORAGE<span class="brand-dim">.ENGINEER</span></span>
+    </a>
+
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#mission">Mission</a>
+      <a href="#work">Work</a>
+      <a href="#flow">Data Flow</a>
+      <a href="#dr">DR</a>
+      <a href="#closing">Summary</a>
+    </nav>
+
+    <button class="menu-btn" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">
+          <span class="pulse-dot"></span>
+          ENTERPRISE INFRASTRUCTURE · STORAGE
+        </div>
+
+        <h1>
+          데이터를 <span class="gradient-text">저장</span>하는 것을 넘어,<br />
+          서비스가 멈추지 않도록 <span class="outline-text">연결합니다.</span>
+        </h1>
+
+        <p class="hero-desc">
+          서버가 필요한 용량을 안전하게 제공하고, SAN을 통해 경로를 연결하며,
+          복제와 DR 구조로 중요한 데이터를 보호하는 스토리지 엔지니어의 업무를 소개합니다.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">업무 둘러보기 <span>↓</span></a>
+          <button class="btn btn-ghost" id="presentationMode" type="button">발표 모드</button>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="스토리지 데이터 흐름 시각화">
+        <div class="visual-shell">
+          <div class="visual-topline">
+            <span>INFRASTRUCTURE MAP</span>
+            <span class="status"><i></i> OPERATIONAL</span>
+          </div>
+
+          <div class="orbit orbit-1"></div>
+          <div class="orbit orbit-2"></div>
+
+          <div class="storage-core">
+            <div class="core-light"></div>
+            <span class="core-label">STORAGE</span>
+            <strong>DATA CORE</strong>
+            <small>Availability · Performance · Protection</small>
+          </div>
+
+          <div class="satellite sat-1">
+            <span>HOST</span>
+            <b>Server</b>
+          </div>
+          <div class="satellite sat-2">
+            <span>FABRIC</span>
+            <b>SAN</b>
+          </div>
+          <div class="satellite sat-3">
+            <span>PROTECT</span>
+            <b>DR</b>
+          </div>
+          <div class="satellite sat-4">
+            <span>OBSERVE</span>
+            <b>Monitor</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-metrics reveal">
+        <div class="metric">
+          <span class="metric-no">01</span>
+          <div><strong>24 × 7</strong><small>Availability Focus</small></div>
+        </div>
+        <div class="metric">
+          <span class="metric-no">02</span>
+          <div><strong>Multi Path</strong><small>Redundant Connectivity</small></div>
+        </div>
+        <div class="metric">
+          <span class="metric-no">03</span>
+          <div><strong>Local + Remote</strong><small>Data Protection</small></div>
+        </div>
+        <div class="metric">
+          <span class="metric-no">04</span>
+          <div><strong>End-to-End</strong><small>Host → SAN → Storage</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="section section-lined" id="mission">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-index">01 / MISSION</span>
+          <h2>스토리지 업무의 핵심은<br /><em>“데이터를 계속 사용할 수 있게 하는 것”</em></h2>
+        </div>
+        <p>
+          디스크 용량만 제공하는 업무가 아닙니다. 서버, SAN, 스토리지, 복제 환경 전체를
+          하나의 데이터 경로로 보고 안정성·성능·복구 가능성을 함께 관리합니다.
+        </p>
+      </div>
+
+      <div class="mission-grid">
+        <article class="mission-card reveal">
+          <span class="card-index">A</span>
+          <div class="mission-icon">↗</div>
+          <h3>Availability</h3>
+          <p>다중 경로와 이중화 구성으로 한 경로에 문제가 생겨도 서비스가 지속될 수 있게 설계합니다.</p>
+          <div class="mini-tags"><span>Multipath</span><span>HA</span></div>
+        </article>
+
+        <article class="mission-card reveal">
+          <span class="card-index">B</span>
+          <div class="mission-icon">◫</div>
+          <h3>Performance</h3>
+          <p>워크로드에 맞는 용량과 연결 구조를 제공하고 병목이 발생하지 않도록 상태를 확인합니다.</p>
+          <div class="mini-tags"><span>LUN</span><span>FC</span></div>
+        </article>
+
+        <article class="mission-card reveal">
+          <span class="card-index">C</span>
+          <div class="mission-icon">⟳</div>
+          <h3>Protection</h3>
+          <p>내부 복제와 원격 복제를 통해 운영 데이터의 복구 지점을 만들고 DR 체계를 유지합니다.</p>
+          <div class="mini-tags"><span>Snapshot</span><span>Replication</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="section-kicker reveal">02 / CORE WORK</div>
+      <div class="work-title reveal">
+        <h2>제가 하는 <span class="gradient-text">스토리지 업무</span></h2>
+        <p>요청 접수부터 할당, 연결, 보호, 모니터링까지 데이터의 전체 생명주기를 관리합니다.</p>
+      </div>
+
+      <div class="work-list">
+        <article class="work-row reveal">
+          <div class="work-no">01</div>
+          <div class="work-copy">
+            <span class="work-label">PROVISIONING</span>
+            <h3>LUN 생성 및 서버 할당</h3>
+            <p>업무 서버가 요구한 용량과 목적을 확인하고 볼륨을 생성한 뒤 Host/Host Group에 안전하게 매핑합니다.</p>
+          </div>
+          <div class="work-tech"><span>LUN</span><span>Volume</span><span>Masking</span></div>
+          <div class="work-arrow">↗</div>
+        </article>
+
+        <article class="work-row reveal">
+          <div class="work-no">02</div>
+          <div class="work-copy">
+            <span class="work-label">CONNECTIVITY</span>
+            <h3>SAN Zoning & Path 구성</h3>
+            <p>서버 HBA의 WWPN과 스토리지 Front-End Port를 SAN Fabric에서 연결하고 다중 경로를 구성합니다.</p>
+          </div>
+          <div class="work-tech"><span>WWPN</span><span>FC</span><span>Zoning</span></div>
+          <div class="work-arrow">↗</div>
+        </article>
+
+        <article class="work-row reveal">
+          <div class="work-no">03</div>
+          <div class="work-copy">
+            <span class="work-label">DATA PROTECTION</span>
+            <h3>내부 복제 · 원격 복제 · DR</h3>
+            <p>운영 데이터의 복제본을 목적별로 구성하고 장애나 재해 상황에서도 복구할 수 있는 데이터 보호 체계를 유지합니다.</p>
+          </div>
+          <div class="work-tech"><span>Local Copy</span><span>SRDF</span><span>DR</span></div>
+          <div class="work-arrow">↗</div>
+        </article>
+
+        <article class="work-row reveal">
+          <div class="work-no">04</div>
+          <div class="work-copy">
+            <span class="work-label">OPERATION</span>
+            <h3>모니터링 · 장애 대응 · 정기 점검</h3>
+            <p>포트, 디스크, 경로, 용량, 성능 이벤트를 확인하고 장애 발생 시 영향 범위를 좁혀 신속하게 대응합니다.</p>
+          </div>
+          <div class="work-tech"><span>Alert</span><span>Health</span><span>Incident</span></div>
+          <div class="work-arrow">↗</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DATA FLOW -->
+    <section class="section section-dark" id="flow">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-index">03 / DATA FLOW</span>
+          <h2>서버에서 저장장치까지,<br /><em>데이터는 이렇게 흐릅니다.</em></h2>
+        </div>
+        <p>
+          발표할 때 이 화면을 기준으로 “각 팀과 어떤 지점에서 협업하는지”를 설명하면
+          스토리지 업무의 위치가 쉽게 이해됩니다.
+        </p>
+      </div>
+
+      <div class="flow-stage reveal">
+        <div class="flow-line"></div>
+
+        <div class="flow-node" data-step="1">
+          <span class="node-top">01</span>
+          <div class="node-icon">APP</div>
+          <strong>Application</strong>
+          <small>데이터 I/O 발생</small>
+        </div>
+
+        <div class="flow-node" data-step="2">
+          <span class="node-top">02</span>
+          <div class="node-icon">OS</div>
+          <strong>Server / OS</strong>
+          <small>Filesystem · LVM</small>
+        </div>
+
+        <div class="flow-node" data-step="3">
+          <span class="node-top">03</span>
+          <div class="node-icon">HBA</div>
+          <strong>HBA</strong>
+          <small>WWPN · Path</small>
+        </div>
+
+        <div class="flow-node accent" data-step="4">
+          <span class="node-top">04</span>
+          <div class="node-icon">SAN</div>
+          <strong>SAN Fabric</strong>
+          <small>Zoning · FC</small>
+        </div>
+
+        <div class="flow-node accent" data-step="5">
+          <span class="node-top">05</span>
+          <div class="node-icon">VOL</div>
+          <strong>Storage</strong>
+          <small>LUN · Masking</small>
+        </div>
+
+        <div class="flow-node" data-step="6">
+          <span class="node-top">06</span>
+          <div class="node-icon">DR</div>
+          <strong>Replication</strong>
+          <small>Local · Remote</small>
+        </div>
+      </div>
+
+      <div class="flow-detail reveal" id="flowDetail">
+        <span>STEP 04</span>
+        <strong>SAN Fabric</strong>
+        <p>서버와 스토리지를 직접 1:1로 연결하는 것이 아니라 SAN Switch가 중간에서 다수의 서버와 스토리지를 안정적으로 연결합니다.</p>
+      </div>
+    </section>
+
+    <!-- DR -->
+    <section class="section" id="dr">
+      <div class="section-kicker reveal">04 / DATA PROTECTION</div>
+      <div class="work-title reveal">
+        <h2>데이터 보호를 <span class="gradient-text">3개의 층</span>으로 봅니다.</h2>
+        <p>운영 데이터는 목적에 따라 내부 복제, 별도 복제본, 원격 DR로 보호합니다.</p>
+      </div>
+
+      <div class="dr-map reveal">
+        <div class="dr-site site-primary">
+          <div class="site-top">
+            <span>PRIMARY SITE</span>
+            <i>LIVE</i>
+          </div>
+          <div class="array">
+            <div class="array-head">
+              <span>Production Storage</span><b>R1</b>
+            </div>
+            <div class="disk-bars">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <div class="copy-grid">
+            <div class="copy-card">
+              <span>LOCAL COPY</span>
+              <strong>Batch / Backup</strong>
+              <small>업무 목적별 복제</small>
+            </div>
+            <div class="copy-card gold">
+              <span>GOLD COPY</span>
+              <strong>Recovery Point</strong>
+              <small>기준 데이터 보존</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="replication-lane">
+          <span class="packet p1"></span>
+          <span class="packet p2"></span>
+          <span class="packet p3"></span>
+          <div class="lane-line"></div>
+          <strong>REMOTE REPLICATION</strong>
+          <small>동기 / 비동기 방식에 따라 원격지 보호</small>
+        </div>
+
+        <div class="dr-site site-remote">
+          <div class="site-top">
+            <span>REMOTE DR</span>
+            <i>STANDBY</i>
+          </div>
+          <div class="array">
+            <div class="array-head">
+              <span>DR Storage</span><b>R2</b>
+            </div>
+            <div class="disk-bars">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="recovery-note">
+            <span>DISASTER RECOVERY</span>
+            <strong>운영 사이트 장애 시 복구를 위한 데이터 사본 유지</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INCIDENT -->
+    <section class="section section-dark" id="incident">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-index">05 / INCIDENT RESPONSE</span>
+          <h2>장애가 발생하면<br /><em>“영향 범위”부터 좁힙니다.</em></h2>
+        </div>
+        <p>스토리지 장애 대응은 한 장비만 보는 것이 아니라 데이터 경로 전체를 순서대로 확인하는 과정입니다.</p>
+      </div>
+
+      <div class="incident-console reveal">
+        <div class="console-bar">
+          <span><i></i><i></i><i></i></span>
+          <b>storage-incident.workflow</b>
+          <small>RUNBOOK</small>
+        </div>
+        <div class="console-body">
+          <div class="terminal">
+            <p><span class="cmd">$</span> check service-impact</p>
+            <p class="ok">✓ Application impact identified</p>
+            <p><span class="cmd">$</span> trace io-path --host-to-array</p>
+            <p class="ok">✓ Host → HBA → SAN → Storage</p>
+            <p><span class="cmd">$</span> inspect port disk capacity alerts</p>
+            <p class="warn">! Isolate abnormal component</p>
+            <p><span class="cmd">$</span> recover & validate</p>
+            <p class="ok">✓ Path / data / service validation complete</p>
+          </div>
+
+          <div class="response-steps">
+            <div><span>01</span><strong>영향 확인</strong><small>서비스/서버 범위</small></div>
+            <div><span>02</span><strong>경로 추적</strong><small>Host → SAN → Storage</small></div>
+            <div><span>03</span><strong>원인 격리</strong><small>Port / Disk / Path / Capacity</small></div>
+            <div><span>04</span><strong>복구 검증</strong><small>I/O와 서비스 정상화 확인</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section">
+      <div class="section-kicker reveal">06 / TECHNOLOGY</div>
+      <div class="tech-marquee reveal" aria-label="관련 기술">
+        <div class="marquee-track">
+          <span>DELL POWERMAX</span><i>✦</i>
+          <span>POWERSTORE</span><i>✦</i>
+          <span>BROCADE SAN</span><i>✦</i>
+          <span>FC / WWPN</span><i>✦</i>
+          <span>MULTIPATH</span><i>✦</i>
+          <span>LUN MASKING</span><i>✦</i>
+          <span>SRDF</span><i>✦</i>
+          <span>SNAPSHOT</span><i>✦</i>
+
+          <span>DELL POWERMAX</span><i>✦</i>
+          <span>POWERSTORE</span><i>✦</i>
+          <span>BROCADE SAN</span><i>✦</i>
+          <span>FC / WWPN</span><i>✦</i>
+          <span>MULTIPATH</span><i>✦</i>
+          <span>LUN MASKING</span><i>✦</i>
+          <span>SRDF</span><i>✦</i>
+          <span>SNAPSHOT</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="section closing" id="closing">
+      <div class="closing-orb" aria-hidden="true"></div>
+      <div class="closing-copy reveal">
+        <span class="section-index">07 / SUMMARY</span>
+        <h2>
+          스토리지는<br />
+          <span class="gradient-text">데이터의 마지막 보루</span>이자<br />
+          서비스의 시작점입니다.
+        </h2>
+        <p>
+          필요한 데이터를 <b>제공</b>하고, 안정적인 경로로 <b>연결</b>하며,
+          복제와 DR로 <b>보호</b>하는 것이 스토리지 엔지니어의 역할입니다.
+        </p>
+        <div class="closing-keywords">
+          <span>PROVISION</span><span>CONNECT</span><span>PROTECT</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>STORAGE ENGINEER · WORK INTRODUCTION</span>
+    <span>Built for presentation · 2026</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
