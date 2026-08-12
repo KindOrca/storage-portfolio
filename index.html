@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,7 +23,7 @@
     <nav class="nav" aria-label="주요 메뉴">
       <a href="#mission">Mission</a>
       <a href="#work">Work</a>
-      <a href="#flow">Data Flow</a>
+      <a href="#allocation">Allocation</a>
       <a href="#dr">DR</a>
       <a href="#closing">Summary</a>
     </nav>
@@ -60,7 +61,7 @@
       <div class="hero-visual reveal" aria-label="스토리지 데이터 흐름 시각화">
         <div class="visual-shell">
           <div class="visual-topline">
-            <span>INFRASTRUCTURE MAP</span>
+            <span>24 × 365 STORAGE OPERATIONS</span>
             <span class="status"><i></i> OPERATIONAL</span>
           </div>
 
@@ -96,11 +97,11 @@
       <div class="hero-metrics reveal">
         <div class="metric">
           <span class="metric-no">01</span>
-          <div><strong>24 × 7</strong><small>Availability Focus</small></div>
+          <div><strong>24 × 365</strong><small>Stable Infrastructure Operation</small></div>
         </div>
         <div class="metric">
           <span class="metric-no">02</span>
-          <div><strong>Multi Path</strong><small>Redundant Connectivity</small></div>
+          <div><strong>장비 입고</strong><small>Install · Connect · Register</small></div>
         </div>
         <div class="metric">
           <span class="metric-no">03</span>
@@ -108,7 +109,7 @@
         </div>
         <div class="metric">
           <span class="metric-no">04</span>
-          <div><strong>End-to-End</strong><small>Host → SAN → Storage</small></div>
+          <div><strong>할당 작업</strong><small>Request → LUN → Mount</small></div>
         </div>
       </div>
     </section>
@@ -208,180 +209,230 @@
       </div>
     </section>
 
-    <!-- DATA FLOW -->
-    <section class="section section-dark" id="flow">
+    <!-- ALLOCATION WORKFLOW -->
+    <section class="section section-dark" id="allocation">
       <div class="section-head reveal">
         <div>
-          <span class="section-index">03 / DATA FLOW</span>
-          <h2>서버에서 저장장치까지,<br /><em>데이터는 이렇게 흐릅니다.</em></h2>
+          <span class="section-index">03 / ALLOCATION WORKFLOW</span>
+          <h2>용량 증설 요청이 들어오면,<br /><em>사용 가능한 디스크가 되기까지</em></h2>
         </div>
         <p>
-          발표할 때 이 화면을 기준으로 “각 팀과 어떤 지점에서 협업하는지”를 설명하면
-          스토리지 업무의 위치가 쉽게 이해됩니다.
+          업무팀의 증설 요청을 기준으로 스토리지팀이 LUN을 생성·할당하고,
+          서버팀이 디스크를 인식한 뒤 LVM / Filesystem을 구성하여 최종 Mount까지 완료합니다.
         </p>
       </div>
 
-      <div class="flow-stage reveal">
-        <div class="flow-line"></div>
-
-        <div class="flow-node" data-step="1">
-          <span class="node-top">01</span>
-          <div class="node-icon">APP</div>
-          <strong>Application</strong>
-          <small>데이터 I/O 발생</small>
+      <div class="allocation-board reveal">
+        <div class="allocation-topbar">
+          <span>STORAGE CAPACITY REQUEST</span>
+          <span class="allocation-live"><i></i> WORKFLOW ACTIVE</span>
         </div>
 
-        <div class="flow-node" data-step="2">
-          <span class="node-top">02</span>
-          <div class="node-icon">OS</div>
-          <strong>Server / OS</strong>
-          <small>Filesystem · LVM</small>
+        <div class="team-lanes">
+          <div class="team-lane business-lane">
+            <div class="team-label">
+              <span>BUSINESS</span>
+              <strong>업무팀</strong>
+            </div>
+            <div class="process-card request-card">
+              <span class="process-no">01</span>
+              <div class="process-symbol">REQ</div>
+              <strong>디스크 용량 증설 요청</strong>
+              <small>대상 서버 · 필요 용량 · 사용 목적 전달</small>
+              <div class="request-chip">+ 500 GB</div>
+            </div>
+          </div>
+
+          <div class="handoff-arrow"><span></span><b>REQUEST</b></div>
+
+          <div class="team-lane storage-lane">
+            <div class="team-label">
+              <span>STORAGE</span>
+              <strong>스토리지팀</strong>
+            </div>
+            <div class="storage-process-stack">
+              <div class="process-card storage-card">
+                <span class="process-no">02</span>
+                <div class="process-symbol">LUN</div>
+                <strong>LUN 생성</strong>
+                <small>요청 용량 확인 후 Volume / LUN 생성</small>
+                <div class="lun-visual"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="process-card storage-card allocation-accent">
+                <span class="process-no">03</span>
+                <div class="process-symbol">MAP</div>
+                <strong>서버에 LUN 할당</strong>
+                <small>Host Mapping · Masking · 필요 시 SAN Zoning 확인</small>
+                <div class="map-path"><span>HOST</span><i></i><span>STORAGE</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="handoff-arrow"><span></span><b>HAND-OFF</b></div>
+
+          <div class="team-lane server-lane">
+            <div class="team-label">
+              <span>SERVER</span>
+              <strong>서버팀</strong>
+            </div>
+            <div class="storage-process-stack">
+              <div class="process-card server-card">
+                <span class="process-no">04</span>
+                <div class="process-symbol">OS</div>
+                <strong>디스크 인식 확인</strong>
+                <small>OS Rescan · Multipath · Device 확인</small>
+                <div class="device-line"><span>/dev/mapper/...</span><i>READY</i></div>
+              </div>
+              <div class="process-card server-card mount-accent">
+                <span class="process-no">05</span>
+                <div class="process-symbol">MNT</div>
+                <strong>LVM / Filesystem → Mount</strong>
+                <small>PV · VG · LV 구성 후 파일시스템 생성 및 Mount</small>
+                <div class="mount-line"><span>/usr/data</span><i>MOUNTED</i></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="flow-node" data-step="3">
-          <span class="node-top">03</span>
-          <div class="node-icon">HBA</div>
-          <strong>HBA</strong>
-          <small>WWPN · Path</small>
+        <div class="allocation-result">
+          <span>RESULT</span>
+          <strong>요청한 용량이 서버에서 실제 사용 가능한 Filesystem으로 제공됩니다.</strong>
+          <div class="result-flow">
+            <span>REQUEST</span><i>→</i><span>LUN</span><i>→</i><span>MASKING</span><i>→</i><span>DEVICE</span><i>→</i><span>MOUNT</span>
+          </div>
         </div>
-
-        <div class="flow-node accent" data-step="4">
-          <span class="node-top">04</span>
-          <div class="node-icon">SAN</div>
-          <strong>SAN Fabric</strong>
-          <small>Zoning · FC</small>
-        </div>
-
-        <div class="flow-node accent" data-step="5">
-          <span class="node-top">05</span>
-          <div class="node-icon">VOL</div>
-          <strong>Storage</strong>
-          <small>LUN · Masking</small>
-        </div>
-
-        <div class="flow-node" data-step="6">
-          <span class="node-top">06</span>
-          <div class="node-icon">DR</div>
-          <strong>Replication</strong>
-          <small>Local · Remote</small>
-        </div>
-      </div>
-
-      <div class="flow-detail reveal" id="flowDetail">
-        <span>STEP 04</span>
-        <strong>SAN Fabric</strong>
-        <p>서버와 스토리지를 직접 1:1로 연결하는 것이 아니라 SAN Switch가 중간에서 다수의 서버와 스토리지를 안정적으로 연결합니다.</p>
       </div>
     </section>
 
     <!-- DR -->
     <section class="section" id="dr">
-      <div class="section-kicker reveal">04 / DATA PROTECTION</div>
+      <div class="section-kicker reveal">04 / LEDGER DATA PROTECTION</div>
       <div class="work-title reveal">
-        <h2>데이터 보호를 <span class="gradient-text">3개의 층</span>으로 봅니다.</h2>
-        <p>운영 데이터는 목적에 따라 내부 복제, 별도 복제본, 원격 DR로 보호합니다.</p>
+        <h2>원장 데이터를 <span class="gradient-text">InDR · ReDR</span>로 보호합니다.</h2>
+        <p>운영 원장 데이터를 기준으로 InDR에는 R2와 내부 업무용 복제본을, ReDR에는 원격 R2와 소산백업을 유지하는 구조를 한눈에 표현했습니다.</p>
       </div>
 
-      <div class="dr-map reveal">
-        <div class="dr-site site-primary">
-          <div class="site-top">
-            <span>PRIMARY SITE</span>
-            <i>LIVE</i>
-          </div>
-          <div class="array">
-            <div class="array-head">
-              <span>Production Storage</span><b>R1</b>
-            </div>
-            <div class="disk-bars">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-            </div>
+      <div class="ledger-dr-map reveal">
+        <div class="dr-column primary-column">
+          <div class="dr-column-head">
+            <span>01 / PRODUCTION</span>
+            <i class="state-live">LIVE</i>
           </div>
 
-          <div class="copy-grid">
-            <div class="copy-card">
-              <span>LOCAL COPY</span>
-              <strong>Batch / Backup</strong>
-              <small>업무 목적별 복제</small>
+          <div class="ledger-core">
+            <div class="ledger-title">
+              <span>CORE BANKING LEDGER</span>
+              <strong>원장 데이터</strong>
+              <small>Production · Source</small>
             </div>
-            <div class="copy-card gold">
-              <span>GOLD COPY</span>
-              <strong>Recovery Point</strong>
-              <small>기준 데이터 보존</small>
+            <div class="ledger-rack">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
+            <div class="ledger-role"><span>R1</span><b>PRODUCTION DATA</b></div>
+          </div>
+
+          <div class="site-caption">
+            <span>SOURCE</span>
+            <p>업무 서비스가 사용하는 기준 원장 데이터</p>
           </div>
         </div>
 
-        <div class="replication-lane">
-          <span class="packet p1"></span>
-          <span class="packet p2"></span>
-          <span class="packet p3"></span>
-          <div class="lane-line"></div>
+        <div class="dr-stream stream-indr">
+          <span class="stream-packet s1"></span>
+          <span class="stream-packet s2"></span>
+          <span class="stream-packet s3"></span>
+          <div class="stream-line"></div>
           <strong>REMOTE REPLICATION</strong>
-          <small>동기 / 비동기 방식에 따라 원격지 보호</small>
+          <small>원장 → InDR</small>
         </div>
 
-        <div class="dr-site site-remote">
-          <div class="site-top">
-            <span>REMOTE DR</span>
-            <i>STANDBY</i>
+        <div class="dr-column indr-column">
+          <div class="dr-column-head">
+            <span>02 / IN-HOUSE DR</span>
+            <i>PROTECTED</i>
           </div>
-          <div class="array">
-            <div class="array-head">
-              <span>DR Storage</span><b>R2</b>
+
+          <div class="r2-card">
+            <div>
+              <span>LEDGER MIRROR</span>
+              <strong>원장 R2 데이터</strong>
+              <small>InDR 기준 복제 데이터</small>
             </div>
-            <div class="disk-bars">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <b>R2</b>
+          </div>
+
+          <div class="local-copy-title"><span>INTERNAL COPY</span><b>R2에서 내부복제</b></div>
+          <div class="copy-stack">
+            <div class="copy-item">
+              <span>BATCH</span>
+              <strong>배치</strong>
+              <small>배치 업무용 복제본</small>
+            </div>
+            <div class="copy-item">
+              <span>BACKUP</span>
+              <strong>백업</strong>
+              <small>백업 업무용 복제본</small>
+            </div>
+            <div class="copy-item gold-copy-item">
+              <span>GOLD COPY</span>
+              <strong>Gold Copy</strong>
+              <small>기준 시점 보존용 복제본</small>
             </div>
           </div>
-          <div class="recovery-note">
+        </div>
+
+        <div class="dr-stream stream-redr">
+          <span class="stream-packet s1"></span>
+          <span class="stream-packet s2"></span>
+          <span class="stream-packet s3"></span>
+          <div class="stream-line"></div>
+          <strong>REMOTE REPLICATION</strong>
+          <small>원장 → ReDR</small>
+        </div>
+
+        <div class="dr-column redr-column">
+          <div class="dr-column-head">
+            <span>03 / REMOTE DR</span>
+            <i class="state-standby">STANDBY</i>
+          </div>
+
+          <div class="r2-card remote-r2">
+            <div>
+              <span>REMOTE LEDGER</span>
+              <strong>원장 R2 데이터</strong>
+              <small>원격 재해복구용 데이터</small>
+            </div>
+            <b>R2</b>
+          </div>
+
+          <div class="offsite-backup">
+            <div class="offsite-icon">BK</div>
+            <div>
+              <span>OFF-SITE BACKUP</span>
+              <strong>소산백업</strong>
+              <small>원격지에 별도 백업 사본 보관</small>
+            </div>
+          </div>
+
+          <div class="redr-purpose">
             <span>DISASTER RECOVERY</span>
-            <strong>운영 사이트 장애 시 복구를 위한 데이터 사본 유지</strong>
+            <strong>센터 단위 장애에도 원장 데이터 복구 기반 유지</strong>
           </div>
         </div>
+      </div>
+
+      <div class="dr-legend reveal">
+        <div><span class="legend-dot primary-dot"></span><strong>원장</strong><small>운영 기준 데이터</small></div>
+        <div><span class="legend-dot indr-dot"></span><strong>InDR</strong><small>R2 + 배치 · 백업 · Gold Copy</small></div>
+        <div><span class="legend-dot redr-dot"></span><strong>ReDR</strong><small>R2 + 소산백업</small></div>
       </div>
     </section>
 
-    <!-- INCIDENT -->
-    <section class="section section-dark" id="incident">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-index">05 / INCIDENT RESPONSE</span>
-          <h2>장애가 발생하면<br /><em>“영향 범위”부터 좁힙니다.</em></h2>
-        </div>
-        <p>스토리지 장애 대응은 한 장비만 보는 것이 아니라 데이터 경로 전체를 순서대로 확인하는 과정입니다.</p>
-      </div>
 
-      <div class="incident-console reveal">
-        <div class="console-bar">
-          <span><i></i><i></i><i></i></span>
-          <b>storage-incident.workflow</b>
-          <small>RUNBOOK</small>
-        </div>
-        <div class="console-body">
-          <div class="terminal">
-            <p><span class="cmd">$</span> check service-impact</p>
-            <p class="ok">✓ Application impact identified</p>
-            <p><span class="cmd">$</span> trace io-path --host-to-array</p>
-            <p class="ok">✓ Host → HBA → SAN → Storage</p>
-            <p><span class="cmd">$</span> inspect port disk capacity alerts</p>
-            <p class="warn">! Isolate abnormal component</p>
-            <p><span class="cmd">$</span> recover & validate</p>
-            <p class="ok">✓ Path / data / service validation complete</p>
-          </div>
-
-          <div class="response-steps">
-            <div><span>01</span><strong>영향 확인</strong><small>서비스/서버 범위</small></div>
-            <div><span>02</span><strong>경로 추적</strong><small>Host → SAN → Storage</small></div>
-            <div><span>03</span><strong>원인 격리</strong><small>Port / Disk / Path / Capacity</small></div>
-            <div><span>04</span><strong>복구 검증</strong><small>I/O와 서비스 정상화 확인</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- TOOLS -->
     <section class="section">
-      <div class="section-kicker reveal">06 / TECHNOLOGY</div>
+      <div class="section-kicker reveal">05 / TECHNOLOGY</div>
       <div class="tech-marquee reveal" aria-label="관련 기술">
         <div class="marquee-track">
           <span>DELL POWERMAX</span><i>✦</i>
@@ -409,7 +460,7 @@
     <section class="section closing" id="closing">
       <div class="closing-orb" aria-hidden="true"></div>
       <div class="closing-copy reveal">
-        <span class="section-index">07 / SUMMARY</span>
+        <span class="section-index">06 / SUMMARY</span>
         <h2>
           스토리지는<br />
           <span class="gradient-text">데이터의 마지막 보루</span>이자<br />
@@ -417,10 +468,10 @@
         </h2>
         <p>
           필요한 데이터를 <b>제공</b>하고, 안정적인 경로로 <b>연결</b>하며,
-          복제와 DR로 <b>보호</b>하는 것이 스토리지 엔지니어의 역할입니다.
+          LUN을 <b>할당</b>하고, 안정적으로 <b>연결</b>하며, InDR·ReDR로 원장 데이터를 <b>보호</b>하는 것이 스토리지 엔지니어의 역할입니다.
         </p>
         <div class="closing-keywords">
-          <span>PROVISION</span><span>CONNECT</span><span>PROTECT</span>
+          <span>ALLOCATE</span><span>CONNECT</span><span>PROTECT</span>
         </div>
       </div>
     </section>
